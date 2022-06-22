@@ -95,3 +95,15 @@ exports.update = (req, res) => {
     });
   }
 };
+
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  Employee.deleteEmployee(id, (err, result) => {
+    if (err) {
+      res.status(400).json({ message: "Cannot Delete Employee" });
+    } else {
+      res.json({ message: "Employee Deleted!!", data: result });
+      console.log(result);
+    }
+  });
+};

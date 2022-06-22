@@ -43,7 +43,6 @@ Employee.addEmployee = (employeeReq, data) => {
       throw err;
     } else {
       console.log(`Adding Employee...`);
-      console.log(employeeReq);
       data(null, result);
     }
   });
@@ -66,11 +65,22 @@ Employee.updateEmployee = (id, employeeReq, data) => {
         throw err;
       } else {
         console.log(`Updating Employee...`);
-        console.log(employeeReq);
         data(null, result);
       }
     }
   );
+};
+
+Employee.deleteEmployee = (id, data) => {
+  db.query(`DELETE FROM employee WHERE id=?`, id, (err, result) => {
+    if (err) {
+      data(null, err);
+      throw err;
+    } else {
+      console.log(`Deleting Employee...`);
+      data(null, result);
+    }
+  });
 };
 
 module.exports = Employee;
