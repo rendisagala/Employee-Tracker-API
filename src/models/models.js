@@ -12,26 +12,38 @@ const Employee = (employee) => {
 };
 
 Employee.getAllEmployees = (data) => {
-  db.query(`SELECT * FROM employee`, (err, res) => {
+  db.query(`SELECT * FROM employee`, (err, result) => {
     if (err) {
-      console.log("Cannot get all employees data");
       data(null, err);
+      throw err;
     } else {
       console.log("Getting All Employee List ...");
-      data(null, res);
+      data(null, result);
+    }
+  });
+};
+
+Employee.getEmployeeById = (id, data) => {
+  db.query(`SELECT * FROM employee WHERE id = ?`, id, (err, result) => {
+    if (err) {
+      data(null, err);
+      throw err;
+    } else {
+      console.log(`Finding Employee...`);
+      data(null, result);
     }
   });
 };
 
 Employee.addEmployee = (employeeReq, data) => {
-  db.query(`INSERT INTO employee SET ?`, employeeReq, (err, res) => {
+  db.query(`INSERT INTO employee SET ?`, employeeReq, (err, result) => {
     if (err) {
-      console.log(`Cannot add employee`);
-      console.log(employeeReq);
       data(null, err);
+      throw err;
     } else {
       console.log(`Employee Added!!`);
-      data(null, res);
+      console.log(employeeReq);
+      data(null, result);
     }
   });
 };

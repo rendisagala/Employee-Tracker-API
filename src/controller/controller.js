@@ -10,6 +10,18 @@ exports.getAll = (req, res) => {
   });
 };
 
+exports.getById = (req, res) => {
+  const id = req.params.id;
+  Employee.getEmployeeById(id, (err, result) => {
+    if (err || !result.length) {
+      res.status(400).json({ message: "Cannot Find Employee" });
+    } else {
+      res.json({ message: "Employee Found!!", data: result });
+      console.log(result);
+    }
+  });
+};
+
 exports.create = (req, res) => {
   // picture, full_name, gender, position, date_of_birth, email, phone_number, address
   const id = Math.floor(Math.random() * 10000000000);
@@ -57,6 +69,7 @@ exports.create = (req, res) => {
         });
       } else {
         res.json({ message: "Employee Successfully Added!!", data: result });
+        console.log(result);
       }
     });
   }
