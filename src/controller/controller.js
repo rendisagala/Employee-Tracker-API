@@ -46,7 +46,7 @@ exports.create = (req, res) => {
     address === ""
   ) {
     res.status(400).json({ message: "Please fill all fields!!" });
-  } else if (req.body.gender !== "Male" && req.body.gender !== "female") {
+  } else if (gender !== "Male" && gender !== "female") {
     res.status(400).json({ message: "Gender must be either male or female!!" });
   } else {
     const employeeReq = {
@@ -85,7 +85,8 @@ exports.update = (req, res) => {
   ) {
     res.status(400).json({ message: "Please fill all fields!!" });
   } else {
-    Employee.updateEmployee(id, (err, result) => {
+    const employeeReq = { picture, position, email, phone_number, address };
+    Employee.updateEmployee(id, employeeReq, (err, result) => {
       if (err) {
         res.status(400).json({ message: "Cannot Update Employee" });
       } else {
