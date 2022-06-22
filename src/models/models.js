@@ -9,6 +9,7 @@ const Employee = (employee) => {
   this.date_of_birth = employee.date_of_birth;
   this.email = employee.email;
   this.phone_number = employee.phone_number;
+  this.address = employee.address;
 };
 
 Employee.getAllEmployees = (data) => {
@@ -17,14 +18,14 @@ Employee.getAllEmployees = (data) => {
       data(null, err);
       throw err;
     } else {
-      console.log("Getting All Employee List ...");
+      console.log("Getting All Employee...");
       data(null, result);
     }
   });
 };
 
 Employee.getEmployeeById = (id, data) => {
-  db.query(`SELECT * FROM employee WHERE id = ?`, id, (err, result) => {
+  db.query(`SELECT * FROM employee WHERE id=?`, id, (err, result) => {
     if (err) {
       data(null, err);
       throw err;
@@ -41,11 +42,35 @@ Employee.addEmployee = (employeeReq, data) => {
       data(null, err);
       throw err;
     } else {
-      console.log(`Employee Added!!`);
+      console.log(`Adding Employee...`);
       console.log(employeeReq);
       data(null, result);
     }
   });
+};
+
+Employee.updateEmployee = (id, employeeReq, data) => {
+  db.query(
+    `UPDATE employee SET picture=?, position=?, email=?, phone_number=?, address=? WHERE id=?`,
+    [
+      employeeReq.picture,
+      employeeReq.position,
+      employeeReq.email,
+      employeeReq.phone_number,
+      employeeReq.address,
+      id,
+    ],
+    (err, result) => {
+      if (err) {
+        data(null, err);
+        throw err;
+      } else {
+        console.log(`Updating Employee...`);
+        console.log(employeeReq);
+        data(null, result);
+      }
+    }
+  );
 };
 
 module.exports = Employee;

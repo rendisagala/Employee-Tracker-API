@@ -37,13 +37,13 @@ exports.create = (req, res) => {
     address,
   } = req.body;
   if (
-    req.body.picture === "" ||
-    req.body.full_name === "" ||
-    req.body.position === "" ||
-    req.body.date_of_birth === "" ||
-    req.body.email === "" ||
-    req.body.phone_number === "" ||
-    req.body.address === ""
+    picture === "" ||
+    full_name === "" ||
+    position === "" ||
+    date_of_birth === "" ||
+    email === "" ||
+    phone_number === "" ||
+    address === ""
   ) {
     res.status(400).json({ message: "Please fill all fields!!" });
   } else if (req.body.gender !== "Male" && req.body.gender !== "female") {
@@ -63,12 +63,33 @@ exports.create = (req, res) => {
     };
     Employee.addEmployee(employeeReq, (err, result) => {
       if (err) {
-        return res.json(400, {
-          error: 1,
-          msg: "Cannot add employee",
-        });
+        res.status(400).json({ message: "Cannot Add Employee" });
       } else {
         res.json({ message: "Employee Successfully Added!!", data: result });
+        console.log(result);
+      }
+    });
+  }
+};
+
+exports.update = (req, res) => {
+  // picture,  position, date_of_birth, email, phone_number, address
+  const id = req.params.id;
+  const { picture, position, email, phone_number, address } = req.body;
+  if (
+    picture === "" ||
+    position === "" ||
+    email === "" ||
+    phone_number === "" ||
+    address === ""
+  ) {
+    res.status(400).json({ message: "Please fill all fields!!" });
+  } else {
+    Employee.updateEmployee(id, (err, result) => {
+      if (err) {
+        res.status(400).json({ message: "Cannot Update Employee" });
+      } else {
+        res.json({ message: "Employee Successfully Updated!!", data: result });
         console.log(result);
       }
     });
