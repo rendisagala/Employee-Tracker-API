@@ -10,5 +10,5 @@ app.use(bodyParser.json());
 app.use("/api/v1/employee", routes);
 
 app.listen(3000, () => {
-  console.log(`server is running!`);
+  console.log(`Server is running!`);
 });

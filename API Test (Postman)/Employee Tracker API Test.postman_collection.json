@@ -29,7 +29,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"picture\" :\"tes\",\r\n    \"full_name\":\"ras\",\r\n    \"gender\":\"Male\",\r\n    \"position\":\"manager\",\r\n\"date_of_birth\":\"2000-01-01\",\r\n\"email\":\"ras@gmail.com\",\r\n\"phone_number\":\"028308223\",\r\n\"address\":\"tes\"\r\n}",
+					"raw": "{\r\n    \"picture\" :\"\",\r\n    \"full_name\":\"\",\r\n    \"gender\":\"Male OR Female\",\r\n    \"position\":\"\",\r\n    \"date_of_birth\":\"\",\r\n    \"email\":\"\",\r\n    \"phone_number\":\"\",\r\n    \"address\":\"\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -37,7 +37,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/employee/add",
+					"raw": "http://localhost:3000/api/v1/employee",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -46,8 +46,7 @@
 					"path": [
 						"api",
 						"v1",
-						"employee",
-						"add"
+						"employee"
 					]
 				}
 			},
