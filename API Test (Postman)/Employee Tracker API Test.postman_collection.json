@@ -95,10 +95,19 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Delete Employee by ID",
 			"request": {
 				"method": "DELETE",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:3000/api/v1/employee/{{Employeeid}}",
 					"protocol": "http",
