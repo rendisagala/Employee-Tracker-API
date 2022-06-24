@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/rendisagala/Employee-Tracker-API/">
-    <img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/000000/external-employee-business-and-management-kiranshastry-solid-kiranshastry.png" alt="Logo" width="80" height="80">
+    <img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/FFFFFF/external-employee-business-and-management-kiranshastry-lineal-color-kiranshastry.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Employee Tracker API</h3>
